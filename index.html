@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#/" class="logo" onclick="showCatalog()">
+                <img src="logo_white.png" height="40">MagazinePro</a>
+            <div class="search-container" id="searchContainer">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="searchInput"
+                    placeholder="Поиск товаров..."
+                    autocomplete="off"
+                >
+                <div class="autocomplete-list" id="autocompleteList"></div>
+            </div>
+            <div class="header-icons">
+                <button class="icon-btn" id="cartBtn" title="Корзина">
+                    <img src="cart_white.png" height="40">
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="icon-btn" id="ordersBtn" title="Мои заказы">
+                    <img src="profile_white.png" height="40">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="notifications-container" id="notificationsContainer"></div>
+
+    <div class="container" id="mainContent"></div>
+
+    <div class="modal" id="editOrderModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('editOrderModal')">✕</button>
+            <div class="modal-header">Редактирование заказа</div>
+            <form id="editOrderForm" class="modal-body">
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input type="text" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input type="text" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label>Адрес доставки</label>
+                    <input type="text" name="delivery_address" required>
+                </div>
+                <div class="form-group">
+                    <label>Дата доставки</label>
+                    <input type="date" name="delivery_date" required>
+                </div>
+                <div class="form-group">
+                    <label>Время доставки</label>
+                    <select name="delivery_interval" required>
+                        <option value="08:00-12:00">08:00 - 12:00</option>
+                        <option value="12:00-14:00">12:00 - 14:00</option>
+                        <option value="14:00-18:00">14:00 - 18:00</option>
+                        <option value="18:00-22:00">18:00 - 22:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Комментарий</label>
+                    <textarea name="comment"></textarea>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('editOrderModal')">Отмена</button>
+                <button class="btn btn-primary" id="saveOrderBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="viewOrderModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('viewOrderModal')">✕</button>
+            <div class="modal-header">Просмотр заказа</div>
+            <div class="modal-body" id="viewOrderContent"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('viewOrderModal')">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="deleteOrderModal">
+        <div class="modal-content">
+            <div class="modal-header">Удаление заказа</div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить заказ?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('deleteOrderModal')">Нет</button>
+                <button class="btn btn-primary" id="confirmDeleteBtn">Да</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
