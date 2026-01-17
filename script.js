@@ -359,15 +359,14 @@ function applySorting() {
         allProducts.sort((a, b) => b.rating - a.rating);
     } else if (sortOrder === 'price_asc') {
         allProducts.sort((a, b) => {
-            const priceA = a.discount_price  a.actual_price;
-            const priceB = b.discount_price  b.actual_price;
+            const priceA = a.discount_price || a.actual_price;
+            const priceB = b.discount_price || b.actual_price;
             return priceA - priceB;
-            
         });
     } else if (sortOrder === 'price_desc') {
         allProducts.sort((a, b) => {
-            const priceA = a.discount_price  a.actual_price;
-            const priceB = b.discount_price  b.actual_price;
+            const priceA = a.discount_price || a.actual_price;
+            const priceB = b.discount_price || b.actual_price;
             return priceB - priceA;
         });
     }
